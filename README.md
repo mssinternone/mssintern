@@ -1,4 +1,4 @@
-# MSS INTERN 3rd Group Names :
+# MSS INTERN 1st Group Names :
 
 | SNO | BRANCH | NAME |
 | ----------- | ----------- | ----------- |
