@@ -1,0 +1,11 @@
+import java.util.Scanner;
+public class ternaryoperator {
+	void main()
+	{
+	    int a, b, c, big ;
+	  System.out.printf("Enter three numbers : ") ;
+	System.out.printf("%d %d %d", &a, &b, &c);
+	big = a > b ? (a > c ? a : c) : (b > c ? b : c);
+	System.out.printf("\nThe biggest number is : %d", big) ;
+	}
+}

@@ -1,0 +1,11 @@
+import java.util.*;
+public class Userdefine {
+public static void main(String[] args) {
+String Str1= "kiran";
+String Str2="keerthi";
+if(Str1==Str2)
+    System.out.println("equal");
+    else
+System.out.println("not equal");
+}
+}

@@ -1,0 +1,14 @@
+package Collections;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+import java.util.ArrayList;
+class Sample_one implements Serializable{
+	int id;
+	String name;
+	Sample_one(int id,String name){
+		this.id=id;
+		this.name=name;
+	}
+}
