@@ -1,0 +1,94 @@
+Table Creation:
+===============
+db2 "create table proc(id int generated always as identity (start with 1,increment by 1),name varchar(20),join date default current_date)" 
+
+
+Procedure creation:
+=================== 
+
+db2 "create procedure loopo(inout id int) 
+      language sql 
+      begin 
+         declare a integer default 0; 
+         declare b integer default 10000; 
+         while(a<b)
+           do 
+             insert into proc(name) values('laaju');
+             set a=a+1; 
+         end while;
+      end"
+
+procedure calling:
+==================
+
+ db2 "call loopo(1)"
+
+
+displaying all records:
+=======================
+
+ db2 "select *from proc"
+
+  
+TRIGGER CREATION:
+=================
+
+db2 "create or replace trigger bal 
+       after  update of balance on atm referencing new as n old as o
+       for each row 
+       begin  
+           case
+                when(n.balance>o.balance) then update lzbank set balance=o.balance+(n.balance-o.balance) where id=n.id; 
+                when(n.balance<o.balance) then update lzbank set balance=o.balance-(o.balance-n.balance) where id=n.id; 
+           end case;
+       end "
+
+
+db2 "select * from lzbank"
+
+ID          NAME                 BALANCE
+----------- -------------------- -----------
+          1 charan                      2000
+          2 laaju                       3000
+          3 deleep                      3000
+          4 ding                        8000
+
+  4 record(s) selected.
+
+db2 "select * from atm"
+
+ID          BALANCE
+----------- -----------
+          1        2000
+          2        3000
+          3        3000
+          4        8000
+
+  4 record(s) selected.
+
+db2 "update atm set balance=3000 where id=4"
+db2 "select * from lzbank"
+
+ID          NAME                 BALANCE
+----------- -------------------- -----------
+          1 charan                      2000
+          2 laaju                       3000
+          3 deleep                      3000
+          4 ding                        3000
+
+  4 record(s) selected.
+
+
+function creation:
+===================
+
+CREATE OR REPLACE FUNCTION db2.function(agearg varchar(100),id varchar(100))
+        RETURNS varchar(10)
+        LANGUAGE SQL
+        MODIFIES SQL DATA
+BEGIN
+        IF agearg>=60 THEN
+                UPDATE pension set salary=salary+5000 where adharid=id;
+        END IF;
+        RETURN 'Hello';
+END@
