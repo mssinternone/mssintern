@@ -12,7 +12,14 @@ public class jdbc1 {
 	            	
 	            	Connection  con =DriverManager.getConnection("jdbc:mysql://localhost:3306/sample_schema","root","root");
 	            	
+	            	
+	            	
 	            	System.out.println("entered into a database...");
+	            	
+	            	PreparedStatement ps= con.prepareStatement("insert into sample values(1,'alekhya',21"));
+	            	
+	            	ps.executeUpdate();
+	            	 System.out.println("done");
 	            	
 	            
 	
