@@ -11,6 +11,7 @@ public class queue {
         pq.add(2);
         pq.add(5); 
         pq.add(9);
+        pq.add(7);
         System.out.println(pq); 
           pq.remove(5);
          System.out.println(pq);
